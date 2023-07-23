@@ -1,6 +1,7 @@
 var startBtn = document.querySelector("#startQuiz");
-
-var qOne = document.querySelector("#question-one");
+var questions = document.querySelector("#challenge");
+var selections = document.querySelector("#answers");
+var result = document.querySelector("#correct");
 
 // var testQuestions[];
 
