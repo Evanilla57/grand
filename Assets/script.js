@@ -1,14 +1,19 @@
 var startBtn = document.querySelector("#startQuiz");
+var qOne = document.querySelector("#question-one")
 
 // function quizContent() {
 //     (quizGame.innerHTML == "test");
 // };
 
-//var quizGame = document.querySelector('#challenge');
+var quizGame = document.querySelector('#challenge');
 
-function test() {
-    console.log("test")
+function displayQuiz() {
+    function showQOne() {
+        quizGame.textContent = qOne;
+        qOne.style.visibility='visible'
+    }
+    showQOne();
 }
 
-startBtn.addEventListener("click", test);
+startBtn.addEventListener("click", displayQuiz);
 
