@@ -8,13 +8,21 @@
 	<link rel="stylesheet" href="Assets/style.css">
 </head>
 <body>
-	<div id="challenge">
-		<h1>Coding Quiz Challenge</h1>
-		<p>Try to answer the following code-ralated questions within the time limit.</br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+	<header>
+		<ul>
+			<li>Scoreboard</li>
+			<li>Timer:<span id="timer">00</span></li>
+		</ul>
+	</header>
+	<div>
+		<h1 id="challenge">Coding Quiz Challenge</h1>
+		<ul id="answers">
+			<li>Try to answer the following code-related questions within the time limit.</br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</li>
+		</ul>
 		<button id="startQuiz">Start Quiz</button>
 	</div>
 	<div id="question-one">
-		<h2></h2>Question 1?</h2>
+		<h2>Question 1?</h2>
 		<ul>
 			<li>A. Answer 1</li>
 			<li>B. Answer 2</li>
