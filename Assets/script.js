@@ -3,6 +3,7 @@ var challengeEl = document.querySelector("#challenge");
 var answersEl = document.querySelector("#answers");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timer");
+var secondsLeft = 60;
 
 var questions = [
     {
@@ -37,6 +38,8 @@ function countDown() {
     1000
     );
 }
+
+countDown();
 
 function displayQuiz() {
     // function showQOne() {
