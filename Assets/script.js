@@ -1,7 +1,30 @@
-var startBtn = document.querySelector("#startQuiz");
-var questions = document.querySelector("#challenge");
-var selections = document.querySelector("#answers");
-var result = document.querySelector("#correct");
+var startBtn = document.querySelector("#start");
+var challengeEl = document.querySelector("#challenge");
+var answersEl = document.querySelector("#answers");
+var resultEl = document.querySelector("#result");
+var timerEl = document.querySelector("#timer")
+
+var questions = [
+    {
+    question: "What is the answer?",
+    answer: ["0", "1", "2", "3"],
+    correct: "0" 
+},
+    {
+    question: "What is the answer?",
+    answer: ["0", "1", "2", "3"],
+    correct: "1" 
+},
+    {
+    question: "What is the answer?",
+    answer: ["0", "1", "2", "3"],
+    correct: "2" 
+},
+    {
+    question: "What is the answer?",
+    answer: ["0", "1", "2", "3"],
+    correct: "3" 
+}];
 
 // var testQuestions[];
 
@@ -10,10 +33,10 @@ var result = document.querySelector("#correct");
 var quizGame = document.querySelector('#challenge');
 
 function displayQuiz() {
-    function showQOne() {
-        quizGame.textContent = "test";
+    // function showQOne() {
+    //     quizGame.textContent = "test";
     }
-    showQOne();
+    // showQOne();
 }
 
 startBtn.addEventListener("click", displayQuiz);
