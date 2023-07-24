@@ -4,6 +4,7 @@ var answersEl = document.querySelector("#answers");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timer");
 var instructionsEl = document.querySelector("#instructions");
+var scoreBtn = document.querySelector("#score");
 var secondsLeft = 60;
 var nextQ = 0;
 var isWin = false;
@@ -41,6 +42,7 @@ function countDown() {
         if (isWin === true) {
             clearInterval(timer);
             resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
+            saveScore();
         }
     },
     1000
@@ -80,10 +82,18 @@ function displayQuiz() {
     }
 }
 
-// function init() {
-
-// }
-
-// init();
-
 startBtn.addEventListener("click", countDown);
+
+scoreBtn.addEventListener("click", showScore);
+
+function showScore() {
+    console.log("hello world");
+}
+
+function saveScore() {
+    var player = {
+        intitials: window.prompt("Please input your initials"),
+        score: timerEl.textContent
+    }
+    localStorage.setItem("player", JSON.stringify(player));
+}
