@@ -4,6 +4,7 @@ var answersEl = document.querySelector("#answers");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timer");
 var secondsLeft = 60;
+var nextQ = 0;
 
 var questions = [
     {
@@ -12,9 +13,9 @@ var questions = [
     correct: "truelean"
 },
     {
-    question: "What is the answer?",
-    answer: ["0", "1", "2", "3"],
-    correct: "1" 
+    question: "Which HTML element holds the Javascript code?",
+    answer: ["<link>", "<script>", "<span>", "<head>"],
+    correct: "<script>" 
 },
     {
     question: "What is the answer?",
@@ -44,16 +45,21 @@ function countDown() {
 function displayQuiz() {
     countDown();
     startBtn.setAttribute("class", "disabled")
-    challengeEl.textContent = questions[0].question;
-    for (var i = 0; i < questions[0].answer.length; i++) {
+    challengeEl.textContent = questions[nextQ].question;
+    for (var i = 0; i < questions[nextQ].answer.length; i++) {
         var answerBtn = document.createElement("button");
         answersEl.appendChild(answerBtn);
-        answerBtn.textContent = questions[0].answer[i];
+        answerBtn.textContent = questions[nextQ].answer[i];
         answerBtn.addEventListener("click", function(event) {
-            if (event.target.textContent === questions[0].correct) {
+            if (event.target.textContent === questions[nextQ].correct) {
                 resultEl.textContent = "Correct!";
-                console.log(event.target.textContent);
-            } else {
+                nextQ++;
+                while (answersEl.firstChild) {
+                    answersEl.removeChild(answersEl.firstChild);
+                };
+                displayQuiz();
+            } 
+            else {
                 secondsLeft = secondsLeft - 5;
                 resultEl.textContent = "Wrong!";
             }
@@ -61,5 +67,6 @@ function displayQuiz() {
         )
     }
 }
+
 
 startBtn.addEventListener("click", displayQuiz);
