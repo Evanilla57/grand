@@ -40,11 +40,10 @@ function countDown() {
     );
 }
 
-
-
 function displayQuiz() {
     countDown();
-    startBtn.setAttribute("class", "disabled")
+    instructions.setAttribute("class", "disabled");
+    startBtn.setAttribute("class", "disabled");
     challengeEl.textContent = questions[nextQ].question;
     for (var i = 0; i < questions[nextQ].answer.length; i++) {
         var answerBtn = document.createElement("button");
@@ -68,5 +67,10 @@ function displayQuiz() {
     }
 }
 
+// function init() {
+
+// }
+
+// init();
 
 startBtn.addEventListener("click", displayQuiz);
