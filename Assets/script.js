@@ -90,18 +90,18 @@ startBtn.addEventListener("click", countDown);
 
 scoreBtn.addEventListener("click", showScore);
 
+function saveScore() {
+    var player = {
+        intitials: window.prompt("Please input your initials"),
+        score: timerEl.textContent
+    } 
+    localStorage.setItem("player", JSON.stringify(player));
+}
+
 function showScore() {
     var playerScore = JSON.parse(localStorage.getItem("player"));
     console.log(playerScore);
     var highScores = document.createElement("li");
     answersEl.appendChild(highScores);
     answersEl.textContent = playerScore.intitials + " scored " + playerScore.score;
-}
-
-function saveScore() {
-    var player = {
-        intitials: window.prompt("Please input your initials"),
-        score: timerEl.textContent
-    }
-    localStorage.setItem("player", JSON.stringify(player));
 }
