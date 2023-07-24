@@ -8,6 +8,7 @@ var scoreBtn = document.querySelector("#score");
 var secondsLeft = 60;
 var nextQ = 0;
 var isWin = false;
+var playerResults = [];
 
 var questions = [
     {
@@ -95,6 +96,7 @@ function saveScore() {
         intitials: window.prompt("Please input your initials"),
         score: timerEl.textContent
     } 
+    playerResults.push(player);
     localStorage.setItem("player", JSON.stringify(player));
 }
 
