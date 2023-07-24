@@ -7,9 +7,9 @@ var secondsLeft = 60;
 
 var questions = [
     {
-    question: "What is the answer?",
-    answer: ["0", "1", "2", "3"],
-    correct: "0" 
+    question: "Which of the following is not a primitive element?",
+    answer: ["truelean", "string", "number", "undefined"],
+    correct: "truelean"
 },
     {
     question: "What is the answer?",
@@ -49,6 +49,16 @@ function displayQuiz() {
         var answerBtn = document.createElement("button");
         answersEl.appendChild(answerBtn);
         answerBtn.textContent = questions[0].answer[i];
+        answerBtn.addEventListener("click", function(event) {
+            if (event.target.textContent === questions[0].correct) {
+                resultEl.textContent = "Correct!";
+                console.log(event.target.textContent);
+            } else {
+                secondsLeft = secondsLeft - 5;
+                resultEl.textContent = "Wrong!";
+            }
+        }
+        )
     }
 }
 
