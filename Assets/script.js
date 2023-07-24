@@ -45,10 +45,11 @@ function displayQuiz() {
     countDown();
     startBtn.setAttribute("class", "disabled")
     challengeEl.textContent = questions[0].question;
-    answersEl.textContent = questions[0].answer;
-    var answerBtn = document.createElement("button");
-    answerBtn.textContent = questions[0].answer[0];
-    console.log(questions[0].answer);
+    for (var i = 0; i < questions[0].answer.length; i++) {
+        var answerBtn = document.createElement("button");
+        answersEl.appendChild(answerBtn);
+        answerBtn.textContent = questions[0].answer[i];
+    }
 }
 
 startBtn.addEventListener("click", displayQuiz);
