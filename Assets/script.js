@@ -43,7 +43,7 @@ function countDown() {
             clearInterval(timer);
             resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
             saveScore();
-           // scoreBtn.disabled = false;
+            scoreBtn.disabled = false;
         }
     },
     1000
@@ -51,7 +51,7 @@ function countDown() {
 }
 
 function displayQuiz() {
-  //  scoreBtn.disabled = true;
+    scoreBtn.disabled = true;
     while (answersEl.firstChild) {
         answersEl.removeChild(answersEl.firstChild);
     }
