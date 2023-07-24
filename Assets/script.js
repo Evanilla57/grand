@@ -3,8 +3,10 @@ var challengeEl = document.querySelector("#challenge");
 var answersEl = document.querySelector("#answers");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timer");
+var instructionsEl = document.querySelector("#instructions");
 var secondsLeft = 60;
 var nextQ = 0;
+var isWin = false;
 
 var questions = [
     {
@@ -18,22 +20,27 @@ var questions = [
     correct: "<script>" 
 },
     {
-    question: "What is the answer?",
-    answer: ["0", "1", "2", "3"],
-    correct: "2" 
+    question: "How do you comment a line of code in Javacript?",
+    answer: ["//", "*/", "/*", "<-->"],
+    correct: "//" 
 },
     {
-    question: "What is the answer?",
-    answer: ["0", "1", "2", "3"],
-    correct: "3" 
+    question: "Which of the following is written in camel case?",
+    answer: ["javascript", "JavaScript", "javaScript", "jAvAsCrIpT"],
+    correct: "javaScript" 
 }];
 
 function countDown() {
+    displayQuiz();
     var timer = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
         if (secondsLeft === 0) {
             clearInterval(timer);
+        }
+        if (isWin === true) {
+            clearInterval(timer);
+            resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
         }
     },
     1000
@@ -41,29 +48,35 @@ function countDown() {
 }
 
 function displayQuiz() {
-    countDown();
-    instructions.setAttribute("class", "disabled");
-    startBtn.setAttribute("class", "disabled");
-    challengeEl.textContent = questions[nextQ].question;
-    for (var i = 0; i < questions[nextQ].answer.length; i++) {
-        var answerBtn = document.createElement("button");
-        answersEl.appendChild(answerBtn);
-        answerBtn.textContent = questions[nextQ].answer[i];
-        answerBtn.addEventListener("click", function(event) {
-            if (event.target.textContent === questions[nextQ].correct) {
-                resultEl.textContent = "Correct!";
-                nextQ++;
-                while (answersEl.firstChild) {
-                    answersEl.removeChild(answersEl.firstChild);
-                };
-                displayQuiz();
-            } 
-            else {
-                secondsLeft = secondsLeft - 5;
-                resultEl.textContent = "Wrong!";
+    if (nextQ > 3) {
+        challengeEl.textContent = "Congratulations!";
+        isWin = true;
+    }
+    else {
+        
+        instructionsEl.setAttribute("class", "disabled");
+        startBtn.setAttribute("class", "disabled");
+        challengeEl.textContent = questions[nextQ].question;
+        for (var i = 0; i < questions[nextQ].answer.length; i++) {
+            var answerBtn = document.createElement("button");
+            answersEl.appendChild(answerBtn);
+            answerBtn.textContent = questions[nextQ].answer[i];
+            answerBtn.addEventListener("click", function(event) {
+                if (event.target.textContent === questions[nextQ].correct) {
+                    resultEl.textContent = "Correct!";
+                    nextQ++;
+                    while (answersEl.firstChild) {
+                        answersEl.removeChild(answersEl.firstChild);
+                    };
+                    displayQuiz();
+                } 
+                else {
+                    secondsLeft = secondsLeft - 5;
+                    resultEl.textContent = "Wrong!";
+                }
             }
-        }
         )
+    }
     }
 }
 
@@ -73,4 +86,4 @@ function displayQuiz() {
 
 // init();
 
-startBtn.addEventListener("click", displayQuiz);
+startBtn.addEventListener("click", countDown);
