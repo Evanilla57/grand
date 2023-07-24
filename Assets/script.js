@@ -43,6 +43,7 @@ function countDown() {
             clearInterval(timer);
             resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
             saveScore();
+           // scoreBtn.disabled = false;
         }
     },
     1000
@@ -50,12 +51,15 @@ function countDown() {
 }
 
 function displayQuiz() {
+  //  scoreBtn.disabled = true;
+    while (answersEl.firstChild) {
+        answersEl.removeChild(answersEl.firstChild);
+    }
     if (nextQ > 3) {
         challengeEl.textContent = "Congratulations!";
         isWin = true;
     }
-    else {
-        
+    else {  
         instructionsEl.setAttribute("class", "disabled");
         startBtn.setAttribute("class", "disabled");
         challengeEl.textContent = questions[nextQ].question;
@@ -87,7 +91,11 @@ startBtn.addEventListener("click", countDown);
 scoreBtn.addEventListener("click", showScore);
 
 function showScore() {
-    console.log("hello world");
+    var playerScore = JSON.parse(localStorage.getItem("player"));
+    console.log(playerScore);
+    var highScores = document.createElement("li");
+    answersEl.appendChild(highScores);
+    answersEl.textContent = playerScore.intitials + " scored " + playerScore.score;
 }
 
 function saveScore() {
