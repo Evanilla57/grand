@@ -39,13 +39,16 @@ function countDown() {
     );
 }
 
-countDown();
+
 
 function displayQuiz() {
-    // function showQOne() {
-    //     quizGame.textContent = "test";
-    }
-    // showQOne();
-// }
+    countDown();
+    startBtn.setAttribute("class", "disabled")
+    challengeEl.textContent = questions[0].question;
+    answersEl.textContent = questions[0].answer;
+    var answerBtn = document.createElement("button");
+    answerBtn.textContent = questions[0].answer[0];
+    console.log(questions[0].answer);
+}
 
 startBtn.addEventListener("click", displayQuiz);
