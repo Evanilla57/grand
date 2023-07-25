@@ -1,3 +1,4 @@
+//variables for selected classes in html
 var startBtn = document.querySelector("#start");
 var challengeEl = document.querySelector("#challenge");
 var answersEl = document.querySelector("#answers");
@@ -5,11 +6,16 @@ var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timer");
 var instructionsEl = document.querySelector("#instructions");
 var scoreBtn = document.querySelector("#score");
+//variable for time left in the time
 var secondsLeft = 60;
+//variable for first position of each question
 var nextQ = 0;
+//variable for win condition
 var isWin = false;
+//variable for array to store results
 var playerResults = [];
 
+//variable to hold the questions, answers, and correct answer choice with key:value pairs
 var questions = [
     {
     question: "Which of the following is not a primitive element?",
@@ -32,10 +38,14 @@ var questions = [
     correct: "javaScript" 
 }];
 
+//function for quiz and timer to begin
 function countDown() {
+    //game starts with first question
     displayQuiz();
+    //timer starts counting down from 60
     var timer = setInterval(function() {
         secondsLeft--;
+        //number of seconds left is diplayed on screen
         timerEl.textContent = secondsLeft;
         if (secondsLeft === 0) {
             clearInterval(timer);
@@ -45,8 +55,6 @@ function countDown() {
             resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
             saveScore();
             scoreBtn.disabled = false;
-            // resultEl.appendChild(startBtn);
-            // startBtn.setAttribute("class", "enabled");
         }
     },
     1000
@@ -54,7 +62,7 @@ function countDown() {
 }
 
 function displayQuiz() {
-    scoreBtn.disabled = true;
+    
     kill();
     if (nextQ > 3) {
         challengeEl.textContent = "Congratulations!";
