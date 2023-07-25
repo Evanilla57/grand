@@ -45,6 +45,8 @@ function countDown() {
             resultEl.textContent = "Your Final Score is " + timerEl.textContent + " Seconds Remaining!";
             saveScore();
             scoreBtn.disabled = false;
+            // resultEl.appendChild(startBtn);
+            // startBtn.setAttribute("class", "enabled");
         }
     },
     1000
@@ -92,18 +94,24 @@ startBtn.addEventListener("click", countDown);
 scoreBtn.addEventListener("click", showScore);
 
 function saveScore() {
+    playerResults = JSON.parse(localStorage.getItem("player"));
     var player = {
         intitials: window.prompt("Please input your initials"),
         score: timerEl.textContent
     } 
     playerResults.push(player);
-    localStorage.setItem("player", JSON.stringify(player));
+    localStorage.setItem("player", JSON.stringify(playerResults));
 }
 
 function showScore() {
     var playerScore = JSON.parse(localStorage.getItem("player"));
     console.log(playerScore);
-    var highScores = document.createElement("li");
+    for (var i = 0; i < playerScore.length; i++) {
+        var highScores = document.createElement("li");
     answersEl.appendChild(highScores);
-    answersEl.textContent = playerScore.intitials + " scored " + playerScore.score;
+    answersEl.textContent = playerScore[i].intitials + " scored " + playerScore[i].score;
+    }
+    // var highScores = document.createElement("li");
+    // answersEl.appendChild(highScores);
+    // answersEl.textContent = playerScore.intitials + " scored " + playerScore.score;
 }
