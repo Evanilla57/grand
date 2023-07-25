@@ -55,9 +55,7 @@ function countDown() {
 
 function displayQuiz() {
     scoreBtn.disabled = true;
-    while (answersEl.firstChild) {
-        answersEl.removeChild(answersEl.firstChild);
-    }
+    kill();
     if (nextQ > 3) {
         challengeEl.textContent = "Congratulations!";
         isWin = true;
@@ -74,9 +72,7 @@ function displayQuiz() {
                 if (event.target.textContent === questions[nextQ].correct) {
                     resultEl.textContent = "Correct!";
                     nextQ++;
-                    while (answersEl.firstChild) {
-                        answersEl.removeChild(answersEl.firstChild);
-                    };
+                    kill();
                     displayQuiz();
                 } 
                 else {
@@ -106,12 +102,16 @@ function saveScore() {
 function showScore() {
     var playerScore = JSON.parse(localStorage.getItem("player"));
     console.log(playerScore);
+    kill();
     for (var i = 0; i < playerScore.length; i++) {
         var highScores = document.createElement("li");
     answersEl.appendChild(highScores);
-    answersEl.textContent = playerScore[i].intitials + " scored " + playerScore[i].score;
+    highScores.textContent = playerScore[i].intitials + " scored " + playerScore[i].score;
     }
-    // var highScores = document.createElement("li");
-    // answersEl.appendChild(highScores);
-    // answersEl.textContent = playerScore.intitials + " scored " + playerScore.score;
+}
+
+function kill() {
+    while (answersEl.firstChild) {
+        answersEl.removeChild(answersEl.firstChild);
+    }
 }
