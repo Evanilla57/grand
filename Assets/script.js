@@ -109,7 +109,6 @@ function saveScore() {
 
 function showScore() {
     var playerScore = JSON.parse(localStorage.getItem("player"));
-    console.log(playerScore);
     kill();
     for (var i = 0; i < playerScore.length; i++) {
         var highScores = document.createElement("li");
