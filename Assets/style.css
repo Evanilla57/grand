@@ -1,9 +1,13 @@
+/* This Barebones Styling Sheet Will Be Edited In The Future As Further Questions Are Added to the Quiz Itself*/
+/* I Look Forward to this Project's Appearance Evolving To Reflect My Own Growing Coding Experience */
+
+/* Body is Given Basic Fonts to Fall Back On as well as Off-White Background */
 body {
 	background-color: #e5e7eb;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-#challenge {
+/* #challenge {
 
 }
 
@@ -13,8 +17,4 @@ body {
 
 #correct {
 	
-}
-
-.disabled {
-	display: none;
-}
+} */

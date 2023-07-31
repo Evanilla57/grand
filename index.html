@@ -8,20 +8,24 @@
 	<link rel="stylesheet" href="Assets/style.css">
 </head>
 <body>
+	<!--Header Containing Scoreboard and Timer-->
 	<header>
 		<ul>
 			<button id="score">Scoreboard</button>
 			<li>Timer:<span id="timer">60</span></li>
 		</ul>
 	</header>
-	<div>
+	<!--Main Div Containing Quiz Details and Button to then Display Quiz Questions and Answer Choices-->
+	<main>
 		<h1 id="challenge">Coding Quiz Challenge</h1>
 		<ul id="answers">
 			<li id="instructions">Try to answer the following code-related questions within the time limit.</br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</li>
 		</ul>
 		<button id="start">Start Quiz</button>
-	</div>
+	</main>
+	<!--Paragraph to Display Result of Correct! or Wrong!-->
 	<p id="result"></p>
+	<!--Javascript File-->
 	<script src="Assets/script.js"></script>
 </body>
 </html>
