@@ -121,17 +121,22 @@ startBtn.addEventListener("click", countDown);
 //event listener for score button to initiate showScore function 
 scoreBtn.addEventListener("click", showScore);
 
-
+//function to allow user to save score
 function saveScore() {
+    //sets playerResults array equal to parsed player data from local storage
     playerResults = JSON.parse(localStorage.getItem("player"));
+    //if statement to set playerResults as an empty array if data is null
     if (playerResults === null) {
         playerResults = [];
     }
+    //variable for player with initials key prompting input of player initials, score set as time left on timer
     var player = {
         intitials: window.prompt("Please input your initials"),
         score: timerEl.textContent
     } 
+    //player information is added to end of playerResults array
     playerResults.push(player);
+    //stores playerResults as string in local storage
     localStorage.setItem("player", JSON.stringify(playerResults));
 }
 

@@ -18,3 +18,8 @@ body {
 #correct {
 	
 } */
+
+/* Property to hide display of certain elements when disabled */
+.disabled {
+	display: none;
+}
