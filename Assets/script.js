@@ -125,9 +125,11 @@ scoreBtn.addEventListener("click", showScore);
 function saveScore() {
     //sets playerResults array equal to parsed player data from local storage
     playerResults = JSON.parse(localStorage.getItem("player"));
+    console.log(playerResults);
     //if statement to set playerResults as an empty array if data is null
     if (playerResults === null) {
         playerResults = [];
+        
     }
     //variable for player with initials key prompting input of player initials, score set as time left on timer
     var player = {
