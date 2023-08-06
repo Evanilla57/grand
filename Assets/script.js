@@ -41,6 +41,8 @@ var questions = [
 
 //function for quiz and timer to begin
 function countDown() {
+    //disabled score button during game
+    scoreBtn.disabled = true;
     //game starts with first question
     displayQuiz();
     //timer starts counting down from 60
